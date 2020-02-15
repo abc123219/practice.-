@@ -23,8 +23,8 @@ void add()
 
 int main(void)
 {
-	/*
 	
+	/*
 	string inftion;
 
 	cout << "请输入学生的信息:" << endl;
@@ -68,7 +68,7 @@ int main(void)
 	*/
 
 	
-
+	/*
 	int suv[32];
 	int n;
 	
@@ -93,13 +93,56 @@ int main(void)
 	{
 		printf("%d",suv[k--]);
 	}
+	*/
 	
+	/*
+	i  j
+	123 456 789
+	逆转789 456 123
 
+	321 654 987			987 654 321
+	789 456 123			789 456 123
+	*/
+	char str[256];
+	int i = 0;//下标
+	cout << "请输入一句话:";
+	gets_s(str);
+
+	while (str[i])//str[i]不等于'\0'    '\0'==0  0=假
+	{
+		//跳过空格
+		//当循环结束后,str[i]等于第一个字符
+		while (str[i] == ' ')i++;
+		int j = i;
+
+		//当循环结束后,str[j]等于最后一个字符的下一个字符
+		while (str[j] && str[j] != ' ')j++;
+
+		//初步逆转单个字符
+		//确定单词的范围
+		for (int k1 = i, k2 = j - 1; k1 < k2; k1++, k2--)
+		{
+			char tmp = str[k1];
+			str[k1] = str[k2];
+			str[k2] = tmp;
+		}
+		
+		i = j;
+	}
+	cout << str << endl;
+
+	//当前i=结束符'\0'
+	//最后逆转
+	for (int k1 = 0, k2 = i - 1; k1 < k2; k1++, k2--)
+	{
+		char tmp = str[k1];
+		str[k1] = str[k2];
+		str[k2] = tmp;
+	}
+		
 	
-
-
-
-
+	cout << str << endl;
+	
 	system("pause");
 
 	return 0;
